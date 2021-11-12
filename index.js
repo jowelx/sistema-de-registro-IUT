@@ -141,15 +141,14 @@ app.post("/principal",async(req,res)=>{
                 if (error) {
                     console.log(error);
                 } else {
-                    DB.query('SELECT * FROM objetivos WHERE user = ?',[user], (err, rows, fields) => {
+                    DB.query('SELECT * FROM objetivos WHERE user = ?',[user], (err, rowss, fields) => {
                         if (!err) {
-                      
-                        
-                            res.render('student',{
-                                user:user,
-                                rows
-                            }) 
-                      
+                            DB.query('SELECT * FROM oe WHERE user = ?',[user], (err, rows, fields) => {
+                                res.render('student',{
+                                    user:user,
+                                    rowss,rows
+                                })
+                            })   
                         } else {
                           console.log(err)
                         }

@@ -13,16 +13,5 @@ connect.connect(function(err){
         console.log('Db connect')
     }
 })
-function Msqlinsert(TABLE, VALUES){
 
-   connect.query('INSERT INTO'[TABLE],'SET ?',VALUES ),async (err,results )=>{
-        if(err){
-            console.log(err)
-        }else{
-            console.log(results)
-            console.log('todo piola pa')
-        }
-
-    }
-}
 module.exports = connect;
