@@ -1,0 +1,118 @@
+<%-include("head/head")%>
+<body>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-5 mx-auto">
+          
+            <div class="card border-0 shadow rounded-3 my-5">
+              <div class="card-body p-2 p-sm-5">
+                <h5 class="card-title text-center mb-5 fw-light fs-5">Establecer objetivo principal</h5>
+                <form action="/principal" method="POST">
+                    <div class="form-floating mb-3">
+                        <input name="user" value="<%=user %>"  class="form-control" id="floatingInput" placeholder="name@example.com" readonly>
+                        <label for="floatingInput">usuario</label>
+                      </div>
+                    <div class="form-floating mb-3">
+                      <input name="principal"  class="form-control" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">objetivo Principal</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select name="trayecto" class="form-select" aria-label="Default select example">
+                            <option selected>¿que trayecto eres?</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                            </div>
+                      <div class="form-floating mb-3">
+                        <select name="carrera" class="form-select" aria-label="Default select example">
+                            <option selected>¿de que carrera eres?</option>
+                            <option value="Informatica">Informatica</option>
+                            <option value="Agro-Alimentacion">Agro-Alimentacion</option>
+                            <option value="mantenimiento">mantenimiento</option>
+                            <option value="mecanica">mecanica</option>
+                          </select>
+                      </div>
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">
+                        Guardar 
+                        </button>
+                    </div>         
+                  </form>
+                  <hr class="my-4">
+                  <h5 class="card-title text-center mb-5 fw-light fs-5">Establecer objetivo principal</h5>
+                <form action="/OE" method="POST">
+                
+                  <div class="form-floating mb-3">
+                    <input name="OE" class="form-control" id="floatingPassword" placeholder="Password" required>
+                    <label for="floatingPassword">Objetivo especifico</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <textarea name="tarea" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                        <label for="floatingPassword">Tareas a realizar</label>
+                  </div>
+                  <div class="form-floating mb-3 ">
+                    <input name="user" value="<%=user %>"  class="form-control" id="floatingInput" placeholder="name@example.com" readonly>
+                    <label for="floatingInput">usuario</label>
+                  </div>  
+                  <div class="d-grid">
+                    <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">
+                       Guardar
+                      </button>
+                  </div>
+                  <hr class="my-4"> 
+                    
+                </form>
+              </div>
+            </div>
+          </div>
+        <div class="col-sm-6 col-md-6 col-lg-5 mx-auto">
+          <div class="card border-0 shadow rounded-3 my-5">
+            <div class="card-body p-4 p-sm-5">
+              <h5 class="card-title text-center mb-5 fw-light fs-5">Publicado</h5>
+         <div>
+             <%rowss.forEach(function(item){%>
+<p>Objetivo principal: <%=item.principal%></p>
+<p>Trayecto: <%=item.trayecto%></p>
+<p>Carrera: <%=item.carrera%></p>
+
+            <% })%>
+         </div>
+         <div>
+          <%let obj = 0%>
+            <% rows.forEach(function(item){%>
+              
+              <form action="/UpdateOE/<%=item.id%>" method="POST">
+                
+                <div class="form-floating mb-3">
+                  <input name="OE" value="<%=item.objetivoE%>"class="form-control" id="floatingPassword" placeholder="Password" required>
+                  <label for="floatingPassword">objetivo N°:<%= obj += 1%></label>
+                </div>
+                <div class="form-floating mb-3">
+                  <textarea name="tarea" class="form-control" id="exampleFormControlTextarea1" required rows="3"><%=item.tarea%></textarea>
+                      <label for="floatingPassword">Tarea</label>
+                </div>
+                <div class="form-floating mb-3 ">
+                  <input name="user" value="<%=user %>"  class="form-control" id="floatingInput" placeholder="name@example.com" readonly>
+                  <label for="floatingInput">usuario</label>
+                </div>
+                <div class="d-grid">
+                  <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">
+                    Actualizar
+                    </button>
+                </div>
+                <hr class="my-4"> 
+                  
+              </form>
+
+           <% })%>
+        </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </body>
+</html>

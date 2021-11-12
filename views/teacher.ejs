@@ -1,0 +1,62 @@
+<%-include("head/head")%>
+<body>
+    <div class="container">
+      <div class="row">
+        <%if(rowss.length>0){%>
+          <%rowss.forEach(function(item){%>
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+              <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+                 
+                    <h5 class="card-title text-center mb-2 fw-light fs-5">Proyecto</h5>
+                    <h5 class="card-title text-left mb-1 fw-light fs-5">Estudiante:<%=item.user%></h5>
+                    <h5 class="card-title text-left mb-1 fw-light fs-5">Trayecto:<%=item.trayecto%></h5>
+                    <h5 class="card-title text-left mb-1 fw-light fs-5">Carrera:<%=item.carrera%></h5>
+                    <h5 class="card-title text-left mb-4 fw-light fs-5">Objetivo principal:<%=item.principal%></h5>
+                   <form action="/DeletePrincipal/<%=item.user%>" method="POST">
+                    <div class="d-grid">
+                    
+                      <button class="btn btn-primary mb-4 btn-login text-uppercase fw-bold" >
+                        <a class="buttonP" href="/proyect/<%=item.user%>">
+                        Ver proyecto
+                      </a>
+                        </button>
+                     
+                     
+                        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">
+                        Borrar proyecto
+                          </button>
+                     
+                    </div>
+                   </form>
+                  
+                  
+        
+                 
+                </div>
+              </div>
+            </div>
+          <%})%>
+       <% }else{%>
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card border-0 shadow rounded-3 my-5">
+            <div class="card-body p-4 p-sm-5">
+             
+                <h5 class="card-title text-center mb-2 fw-light fs-5">aun no hay proyectos publicados</h5>
+           
+              
+                
+                
+              
+              
+    
+             
+            </div>
+          </div>
+        </div>
+    <%}%>
+
+      </div>
+    </div>
+  </body>
+</html>
